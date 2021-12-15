@@ -1,5 +1,11 @@
 # Library Management System
 
+## Tech stacks:
+
+- Frontend: React
+	- Run: cd to `client/`, run with `yarn start`
+- Backend: Spring Boot
+
 ## TODO
 
 1. Design:
