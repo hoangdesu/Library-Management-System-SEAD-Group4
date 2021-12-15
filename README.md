@@ -2,7 +2,8 @@
 
 ## Tech stacks:
 
-- Frontend: React
+- Frontend: ReactJS
+	- Installation: `yarn add`
 	- Run: cd to `client/`, run with `yarn start`
 - Backend: Spring Boot
 
