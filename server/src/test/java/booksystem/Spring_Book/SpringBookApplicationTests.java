@@ -1,10 +1,10 @@
-package SEAD_Gr4.LibraryManagementSystem;
+package booksystem.Spring_Book;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LMSMainTests {
+class SpringBookApplicationTests {
 
 	@Test
 	void contextLoads() {
