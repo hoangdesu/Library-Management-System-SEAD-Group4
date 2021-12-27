@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+// userDetailsService new update manual class.
 @Service
 public class CustomUserService implements UserDetailsService {
 
@@ -21,7 +22,7 @@ public class CustomUserService implements UserDetailsService {
         Person user=userDetailsRepository.findByUserName(username);
 
         if(null==user) {
-            throw new UsernameNotFoundException("User Not Found with userName "+username);
+            throw new UsernameNotFoundException("User Not Found with username "+username);
         }
         return user;
     }
