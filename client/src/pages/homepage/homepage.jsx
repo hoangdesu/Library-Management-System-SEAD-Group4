@@ -19,6 +19,30 @@ export default function Homepage() {
                 <h2>Search for the books and resources you need</h2>
 
             </div>
+
+            <div className="jumbotron2 card bg-dark text-white">
+
+                <img className="card-img" src="library.png" alt="Card image" />
+                <div className="card-img-overlay">
+                    <div >
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p className="card-text">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div className="div1">Another div</div>
+
+            <div class="carousel-item">
+                <img src="..." alt="..." />
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>...</h5>
+                    <p>...</p>
+                </div>
+            </div>
         </div>
+
     )
 }
