@@ -8,9 +8,8 @@
 
 .jumbotron2 > div > div {
     background-color: rgba(255, 255, 255, 0.8);
-    margin:0 20% 0 20%;
+    margin:0 16% 0 16%;
     color: black;
-    text-align: center;
-    padding: 10px ;
+    padding: 40px 20px 40px 20px ;
     position: absolute;
 } 
