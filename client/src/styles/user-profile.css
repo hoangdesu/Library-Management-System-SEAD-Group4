@@ -1,0 +1,13 @@
+.body {
+    margin: 0 17% 0 17%;
+    height: 80%;
+}
+
+.avatar {
+    height: 100px;
+    width: 100px;
+}
+
+.tab{
+    min-width: 25%;
+}
