@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/user-profile.css"
 import 'font-awesome/css/font-awesome.min.css';
+import Popup from "../layouts/popup";
 
 export default function UserProfile() {
-    const user = {
+
+    const [user, setUser] = useState({
         first_name: "duc",
-        last_name: "nguyen trung"
+        last_name: "nguyen trung",
+        email: "ntduc.291099@gmail.com",
+        phone: 8109283123,
+        username: "something"
+    })
+
+    const onSaveClicked = () => {
+        console.log(user)
+    }
+
+    const onCancleClicked = () => {
+        console.log("cancle")
     }
 
     return (
+
         <div className="body d-flex align-items-start">
             <div className="tab nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <div className="App">
@@ -31,44 +45,96 @@ export default function UserProfile() {
 
                     <div class="row g-2">
                         <div class="col-6">
-                            <div className="form-floating ">
-                                <input type="text" className="form-control" id="userName" placeholder="Username" />
-                                <label for="userName">Username</label>
+                            <label for="firstName" class="col-sm-4 col-form-label"><strong>First name</strong></label>
+                            <div class="col-sm-10">
+                                <input id="firstName" class="form-control" type="text" value={user.first_name} readonly />
                             </div>
                         </div>
                         <div class="col-6">
-                            <div className="form-floating ">
-                                <input type="text" className="form-control" id="firstName" placeholder="First name" />
-                                <label for="firstName">First name</label>
+                            <label for="lastName" class="col-sm-4 col-form-label"><strong>Last name</strong></label>
+                            <div class="col-sm-10">
+                                <input id="lastName" class="form-control" type="text" value={user.last_name} readonly />
                             </div>
                         </div>
                         <div class="col-6">
-                            <div className="form-floating ">
-                                <input type="text" className="form-control" id="lastName" placeholder="Last name" />
-                                <label for="lastName">Last name</label>
+                            <label for="username" class="col-sm-4 col-form-label"><strong>Username</strong></label>
+                            <div class="col-sm-10">
+                                <input id="username" class="form-control" type="text" value={user.username} readonly />
                             </div>
                         </div>
 
                         <div class="col-6">
-                            <div className="form-floating ">
-                                <input type="number" className="form-control" id="phoneNum" placeholder="Phone number" />
-                                <label for="phoneNum">Phone number</label>
+                            <label for="email" class="col-sm-4 col-form-label"><strong>Email</strong></label>
+                            <div class="col-sm-10">
+                                <input id="email" class="form-control" type="text" value={user.email} readonly />
                             </div>
                         </div>
+                        <div class="col-6">
+                            <label for="phoneNo" class="col-sm-5 col-form-label"><strong>Phone number</strong></label>
+                            <div class="col-sm-10">
+                                <input id="phoneNo" class="form-control" type="text" value={user.phone} readonly />
+                            </div>
+                        </div>
+                    </div>
 
-                    </div>
-                    <div class="input-group mt-3">
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" />
-                        <span class="input-group-text">@</span>
-                        <input type="text" class="form-control" placeholder="Server" aria-label="Server" />
-                    </div>
+                    <button type="button" className="btn btn-primary mt-4 ml-3" data-bs-toggle="modal" data-bs-target="#changeInfo">Change user info</button>
+
+                    {/* POP-UP TO CHANGE USER INFO */}
+                    <Popup id="changeInfo" aria_labelledby="title">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="title">Change user info</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="inputFirstname" class="form-label">First name</label>
+                                            <input type="text" class="form-control" id="inputFirstname" value={user.first_name} onChange={(e) => setUser({
+                                                first_name: e.target.value, last_name: user.last_name, email: user.email, phone: user.phone, username: user.username
+                                            })} />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputLastname" class="form-label">Last name</label>
+                                            <input type="text" class="form-control" id="inputLastname" value={user.last_name} onChange={(e) => setUser({
+                                                first_name: user.first_name, last_name: e.target.value, email: user.email, phone: user.phone, username: user.username
+                                            })} />
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="inputUsername" class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="inputUsername" value={user.username} onChange={(e) => setUser({
+                                                first_name: user.first_name, last_name: user.last_name, email: user.email, phone: user.phone, username: e.target.value
+                                            })} />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputEmail" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="inputEmail" value={user.email} onChange={(e) => setUser({
+                                                first_name: user.first_name, last_name: user.last_name, email: e.target.value, phone: user.phone, username: user.username
+                                            })} />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputPhone" class="form-label">Phone number</label>
+                                            <input type="tel" class="form-control" id="inputPhone" pattern="[0-9]{4} [0-9]{3} [0-9]{3}" maxlength="12" value={user.phone} onChange={(e) => setUser({
+                                                first_name: user.first_name, last_name: user.last_name, email: user.email, phone: e.target.value, username: user.username
+                                            })} />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={() => onCancleClicked()}>Close</button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={() => onSaveClicked()}>Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </Popup>
                 </div>
 
                 {/* CHANGE PASSWORD */}
                 <div className="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                     <h4 className="mb-3">Change Password</h4>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control" id="oldPass" placeholder="Old Password" />
+                        <input type="password" className="form-control" id="oldPass" placeholder="Old Password" />
                         <label for="oldPass">Old Password</label>
                     </div>
                     <div className="form-floating mb-3">
@@ -81,8 +147,12 @@ export default function UserProfile() {
                     </div>
                     <button type="button" className="btn btn-primary">Save</button>
                 </div>
-                <div className="tab-pane fade" id="privacy" role="tabpanel" aria-labelledby="privacy-tab">...1</div>
-                <div className="tab-pane fade" id="notifycation" role="tabpanel" aria-labelledby="notifycation-tab">...2</div>
+                <div className="tab-pane fade" id="privacy" role="tabpanel" aria-labelledby="privacy-tab">
+                    <h4 className="mb-3">Privacy Settings</h4>
+                </div>
+                <div className="tab-pane fade" id="notifycation" role="tabpanel" aria-labelledby="notifycation-tab">
+                    <h4 className="mb-3">Notification Settings</h4>
+                </div>
             </div>
         </div>
     )
