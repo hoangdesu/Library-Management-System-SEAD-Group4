@@ -12,68 +12,76 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.annotation.PostConstruct;
+import java.util.Map;
 
 @Transactional
 @Service
 @RequestMapping(path = "api/v1/book")
-public class BookService {
+public class BookService implements BookRepo {
+
+    private final String BOOK_CACHE = "BOOK";
+
     @Autowired
-    private BookRepository bookRepository;
-    private SessionFactory sessionFactory;
-    public void addStudent(Book book){
-        this.bookRepository.save(book);
+    RedisTemplate<String, Object> redisTemplate;
+    private HashOperations<String, Long, Book> hashOperations;
+    BookDBRepository bookDBRepository;
+
+    // This annotation makes sure that the method needs to be executed after
+    // dependency injection is done to perform any initialization.
+    @PostConstruct
+    private void intializeHashOperations() {
+        hashOperations = redisTemplate.opsForHash();
     }
 
-    @RequestMapping(path = "/books/{id}", method = RequestMethod.GET)
-    public List<Book> getAllBooks(){
-        return this.bookRepository.findAll();
+    // Save operation.
+    @Override
+    public void save(final Book book) {
+//        hashOperations.put(BOOK_CACHE, book.getId(), book);
+        bookDBRepository.save(book);
     }
 
-    @RequestMapping(path = "/books/{id}", method = RequestMethod.POST)
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    //Save to Cache operation
+    public void saveToCache(final Book book){
+        hashOperations.put(BOOK_CACHE, book.getId(), book);
     }
 
-    public List<Book> getBooks(){
-        return bookRepository.findAll();
-    }
-
-    public void addNewBook(Book book){
-        Optional<Book> itemById = bookRepository.findBookById(book.getId());
-        if (itemById.isPresent()){
-            throw new IllegalStateException("id taken");
+    //get a book by Id
+    public Book getBook(Long id){
+        Book book = null;
+        try{
+            book = this.bookDBRepository.findById(id)
+                    .orElseThrow(() -> new Exception("Book not found for this id "+ id));
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        bookRepository.save(book);
+        return book;
     }
 
-    @RequestMapping(path = "/books/{id}", method = RequestMethod.DELETE)
-    public void deleteItem(Long itemId){
-        boolean exists = bookRepository.existsById(itemId);
-        if (!exists){
-            throw new IllegalStateException(
-                    "item with id" + itemId + "does not exist"
-            );
-        }
-        bookRepository.deleteById(itemId);
-    }
 
-    @Transactional
-    public void updateBook(Long id, String name, int numStocks){
-        int len = String.valueOf(id).length();
-        Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalStateException(
-                "item with id" + id + "does not exist"
-        ));
-
-        if (name != null && name.length() > 0 && !Objects.equals(book.getName(), name)){
-            book.setName(name);
-        }
-
-        if (id != null && len > 0 && !Objects.equals(book.getId(), id)){
-            Optional<Book> studentOptional = bookRepository.findBookById(id);
-            if (studentOptional.isPresent()){
-                numStocks++;
-            }
-            book.setId(id);
+    // Find by employee id operation.
+    @Override
+    public Book findById(final Long id) {
+        Book book = (Book) hashOperations.get(BOOK_CACHE, id);
+        if (book != null){
+            return book;
+        }else{
+            Book book1 = this.getBook(Long.valueOf(id));
+            saveToCache(book1);
+            return book1;
         }
     }
+
+    // Find all employees operation.
+    @Override
+    public Map<Long, Book> findAll() {
+        return hashOperations.entries(BOOK_CACHE);
+    }
+
+    // Delete employee by id operation.
+    @Override
+    public void delete(Long id) {
+        hashOperations.delete(BOOK_CACHE, id);
+    }
+
 }
