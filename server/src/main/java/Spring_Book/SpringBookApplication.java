@@ -35,7 +35,7 @@ public class SpringBookApplication {
 
         Person user=new Person();
 
-        user.setUserName("aaronBuihuy1234");
+        user.setUserName("aaronBuihuy12345");
         user.setFirstName("aaronstone");
         user.setLastName("K");
 
@@ -45,10 +45,7 @@ public class SpringBookApplication {
 
         userDetailsRepository.save(user);
 
-
-
     }
-
 
     private Authority createAuthority(String roleCode, String roleDescription) {
         Authority authority=new Authority();

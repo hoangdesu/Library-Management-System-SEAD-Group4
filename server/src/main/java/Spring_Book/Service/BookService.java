@@ -1,17 +1,17 @@
 package Spring_Book.Service;
 
 import Spring_Book.Model.Book;
+import Spring_Book.Repository.BookRepo;
 import Spring_Book.Repository.BookRepository;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.PostConstruct;
 import java.util.Map;
 
@@ -25,7 +25,7 @@ public class BookService implements BookRepo {
     @Autowired
     RedisTemplate<String, Object> redisTemplate;
     private HashOperations<String, Long, Book> hashOperations;
-    BookDBRepository bookDBRepository;
+    BookRepository bookDBRepository;
 
     // This annotation makes sure that the method needs to be executed after
     // dependency injection is done to perform any initialization.
