@@ -5,6 +5,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import Homepage from './pages/homepage/homepage';
 import Navbar from './pages/layouts/navbar';
 import Footer from './pages/layouts/footer';
+import UserProfile from './pages/user/UserProfile';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route exact path="/" component={LoginPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/homepage" component={Homepage} />
+                    <Route exact path="/user/profile" component={UserProfile} />
                 </Switch>
             </BrowserRouter>
             <Footer />

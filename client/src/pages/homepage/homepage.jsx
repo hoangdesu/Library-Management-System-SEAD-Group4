@@ -94,7 +94,21 @@ export default function Homepage() {
             </div>
 
             <div className="jumbotron3">
-                Contact Us
+                <h5 className="lead"><strong>Contact Us</strong></h5>
+                <div class="row row-cols-lg-4 g-2 g-lg-3">
+                    <div class="col">
+                        <div class="pt-3"><i class="fa fa-facebook-f fa-lg pr-3" /><a href="" className="text-dark">Follow us on Facebook</a></div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3"><i class="fa fa-youtube fa-lg pr-3" /><a href="" className="text-dark">Our YouTube channel</a></div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3"><i class="fa fa-twitter fa-lg pr-3" /><a href="" className="text-dark">Our Twitter channel</a></div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3"><i class="fa fa-map-marker fa-lg pr-3" /><a href="" className="text-dark">Visit us</a></div>
+                    </div>
+                </div>
             </div>
         </div >
 
