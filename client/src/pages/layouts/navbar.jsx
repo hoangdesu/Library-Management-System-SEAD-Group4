@@ -3,19 +3,19 @@ import "../../styles/layout.css"
 
 export default function Navbar() {
     return (
-        <nav class="nav navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand">Navbar</a>
-                <form class="d-flex input-group w-auto">
+        <nav className="navbar">
+            <div className="container-fluid">
+                <a className="navbar-brand">Navbar</a>
+                <form className="d-flex input-group w-auto">
                     <input
                         type="search"
-                        class="form-control rounded"
+                        className="form-control rounded"
                         placeholder="Search"
                         aria-label="Search"
                         aria-describedby="search-addon"
                     />
-                    <span class="input-group-text border-0" id="search-addon">
-                        <i class="fas fa-search"></i>
+                    <span className="input-group-text border-0" id="search-addon">
+                        <i className="fas fa-search"></i>
                     </span>
                 </form>
             </div>
