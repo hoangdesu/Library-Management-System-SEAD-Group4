@@ -22,20 +22,16 @@ const counter = (state = initialState, action) => {
 export default counter;
 
 // ACTIONS
-const Increment = (value) => {
+export const Increment = (value) => {
     return {
         type: COUNTER_INCREMENT,
         payload: value
     }
 }
 
-const Decrement = (value) => {
+export const Decrement = (value) => {
     return {
         type: COUNTER_DECREMENT,
         payload: value
     }
-}
-
-export {
-    Increment, Decrement
 }

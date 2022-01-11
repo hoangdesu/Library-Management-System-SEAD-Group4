@@ -1,7 +1,14 @@
 import { AUTH_REQ, AUTH_SUCCESS, AUTH_FAILURE } from '../types';
 
 const initialState = {
-    user: {},
+    user: {
+        // first_name: "duc",
+        // last_name: "nguyen trung",
+        // email: "ntduc.291099@gmail.com",
+        // phone: 8109283123,
+        // username: "something",
+        // password: "123"
+    },
     error: '',
     loading: false
 };
