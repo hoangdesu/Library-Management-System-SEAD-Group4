@@ -6,7 +6,6 @@ import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from '
 
 export default function NavigationBar() {
     const auth = useSelector(state => state.auth)
-    console.log(auth.user)
 
     return (
         <div className="nav1">
