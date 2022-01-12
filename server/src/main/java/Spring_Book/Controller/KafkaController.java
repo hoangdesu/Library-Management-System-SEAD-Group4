@@ -1,6 +1,6 @@
-package Spring_Book.Controller
+package Spring_Book.Controller;
 
-import com.example.kafka_redis_book.engine.Producer;
+import Spring_Book.Model.Producer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

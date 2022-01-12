@@ -1,6 +1,7 @@
-package Spring_Book.Repository
+package Spring_Book.Repository;
 
-import com.example.kafka_redis_book.model.Book;
+
+import Spring_Book.Model.Book;
 
 import java.util.Map;
 
