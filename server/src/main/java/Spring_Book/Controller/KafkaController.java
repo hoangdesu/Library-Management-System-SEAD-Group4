@@ -1,9 +1,11 @@
 package Spring_Book.Controller;
 
+import Spring_Book.Model.Book;
 import Spring_Book.Model.Producer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,13 +22,12 @@ public class KafkaController {
     @Autowired
     private Producer producer;
 
-
-    @PostMapping(value = "/publish")
-    public String sendMessageToKafkaTopic(@RequestParam("message") String message) {
-        logger.info(String.format("#### -> Producing message -> %s", message));
+    @PostMapping(value = "/book/publish")
+    public String sendMessageToKafkaTopic(@RequestBody Book book) {
+        logger.info(String.format("#### -> Producing message -> %s", book.getName()));
 //        this.kafkaTemplate.send(TOPIC, message);
 
-        this.producer.sendMessage(message);
+        this.producer.sendMessage(book);
 
         return "Success";
     }

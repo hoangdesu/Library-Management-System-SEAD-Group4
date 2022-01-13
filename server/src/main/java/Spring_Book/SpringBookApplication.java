@@ -35,7 +35,7 @@ public class SpringBookApplication {
 
         Person user=new Person();
 
-        user.setUserName("aaronBuihuy12345");
+        user.setUserName("aaronBuihuy123456");
         user.setFirstName("aaronstone");
         user.setLastName("K");
 
