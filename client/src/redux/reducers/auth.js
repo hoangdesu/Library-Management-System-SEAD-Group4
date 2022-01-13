@@ -54,20 +54,20 @@ const auth = (state = initialState, action) => {
 
 export default auth;
 
+
+// export const retrieveUsers = () => async (dispatch) => {
+//     try {
+//         const res = await Service.getAll(userEndpoint);
+
+//         dispatch({
+//             type: RETRIEVE_USERS,
+//             payload: res.data,
+//         });
+//     } catch (err) {
+//         console.log(err);
+//     }
+// };
 // ACTIONS
-export const retrieveUsers = () => async (dispatch) => {
-    try {
-        const res = await Service.getAll(userEndpoint);
-
-        dispatch({
-            type: RETRIEVE_USERS,
-            payload: res.data,
-        });
-    } catch (err) {
-        console.log(err);
-    }
-};
-
 export const updateUser = (id, data) => async (dispatch) => {
     try {
         const res = await Service.update(id, data, userEndpoint);
