@@ -22,6 +22,10 @@ public class Book {
 
     public Book(){}
 
+    public Book (String name){
+        this.name = name;
+    }
+
     public Book(Long id, String name, float price, boolean available, String category, int numberStocks, LocalDate dod, LocalDate dob) {
         this.id = id;
         this.name = name;
