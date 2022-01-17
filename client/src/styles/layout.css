@@ -7,12 +7,7 @@ footer {
     background-color: rgb(43,15,66);
 }
 
-.nav {
-    padding: 0px 17% 0px 17%;
+.nav1 {
+    padding: 15px 15% 0px 15%;
     background-color: rgb(124, 86, 185);
-    color: white;
-}
-
-.nav a {
-    color: white;
 }
