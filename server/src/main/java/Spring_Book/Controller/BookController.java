@@ -18,7 +18,7 @@ public class BookController {
     private static final Logger LOG = LoggerFactory.getLogger(BookController.class);
 
     @Autowired
-    BookService service;
+    private BookService service;
 
     // Save a new employee.
     // Url - http://localhost:10091/api/redis/book
@@ -27,6 +27,14 @@ public class BookController {
         LOG.info("Saving the new employee to the redis.");
         service.save(book);
         return "Successfully added. Employee with id= " + book.getId();
+    }
+
+    @PutMapping
+    public String update(@RequestBody final Book book) {
+        LOG.info("Saving the new employee to the redis.");
+        service.deleteFromRedis(book.getId());
+        service.save(book);
+        return "Successfully updated. Employee with id= " + book.getId();
     }
 
     // Get all employees.
