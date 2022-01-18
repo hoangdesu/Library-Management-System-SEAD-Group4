@@ -32,6 +32,12 @@ public class KafkaController {
         return "Success";
     }
 
+    @PostMapping(value = "/person/publish")
+    public String sendMessageToKafkaTopic(@RequestBody Person person){
+        logger.info(String.format("### -> Producing message -> %s", Person.getEmail()));
+        this.producer.sendMessage(person);
+    }
+
     @GetMapping(value = "/hello")
     public void hello() {
         System.out.println("Hello");

@@ -1,21 +1,21 @@
 package Spring_Book.Repository;
 
 
-import Spring_Book.Model.Book;
+import Spring_Book.Model.Person;
 
 import java.util.Map;
 
 //For Redis usage
-public interface BookRepo {
+public interface PersonRepo {
 
     // Save a new book.
-    void save(Book book);
+    void save(Person person);
 
     // Find book by id.
-    Book findById(Long id);
+    Person findById(Long id);
 
     // Final all book.
-    Map<Long, Book> findAll();
+    Map<Long, Person> findAll();
 
     // Delete a book.
     void delete(Long id);

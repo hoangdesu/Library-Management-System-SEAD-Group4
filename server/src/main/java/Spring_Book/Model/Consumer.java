@@ -17,19 +17,30 @@ public class Consumer {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowire
+    private PersonRepository personRepository;
+
 
     @KafkaListener(topics = "books", groupId = "group_id")
     public void consume(String message) throws IOException {
         logger.info(String.format("#### -> Consumed message -> %s", message));
 
         //save message to database
-        Book city = new Book(message);
+        Book book = new Book(message);
 
-        bookRepository.save(city);
+        bookRepository.save(book);
 
-        logger.info(String.format("#### -> ID message -> %s", city.getId()));
+        logger.info(String.format("#### -> ID message -> %s", book.getId()));
+    }
 
+    @KafkaListener(topics = "persons", groupId = "person_id")
+    public void userConsume(String message) throws IOException{
+        logger.info(String.format("#### -> Consumed message -> %s", message));
 
+        Person person = new Person(message);
 
+        personRepository.save(person);
+
+        logger.info(String.format("#### -> ID message -> %s", person.getId()));
     }
 }

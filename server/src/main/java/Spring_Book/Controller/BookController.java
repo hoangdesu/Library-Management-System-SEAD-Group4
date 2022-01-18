@@ -20,26 +20,26 @@ public class BookController {
     @Autowired
     BookService service;
 
-    // Save a new employee.
+    // Save a new book.
     // Url - http://localhost:10091/api/redis/book
     @PostMapping
     public String save(@RequestBody final Book book) {
-        LOG.info("Saving the new employee to the redis.");
+        LOG.info("Saving the new book to the redis.");
         service.save(book);
-        return "Successfully added. Employee with id= " + book.getId();
+        return "Successfully added. book with id= " + book.getId();
     }
 
-    // Get all employees.
+    // Get all books.
     // Url - http://localhost:10091/api/redis/book/getall
     @GetMapping("/getall")
     public Map<Long, Book> findAll() {
-        LOG.info("Fetching all employees from the redis.");
+        LOG.info("Fetching all book from the redis.");
         final Map<Long, Book> bookMap = service.findAll();
         // Todo - If developers like they can sort the map (optional).
         return bookMap;
     }
 
-    // Get employee by id.
+    // Get books by id.
     // Url - http://localhost:10091/api/redis/book/get/<book_id>
     @GetMapping("/get/{id}")
     public Book findById(@PathVariable("id") final Long id) {
@@ -47,14 +47,14 @@ public class BookController {
         return service.findById(id);
     }
 
-    // Delete employee by id.
-    // Url - http://localhost:10091/api/redis/employee/delete/<employee_id>
+    // Delete book by id.
+    // Url - http://localhost:10091/api/redis/book/delete/<book_id>
     @DeleteMapping("/delete/{id}")
     public Map<Long, Book> delete(@PathVariable("id") final Long id) {
-        LOG.info("Deleting employee with id= " + id);
-        // Deleting the employee.
+        LOG.info("Deleting book with id= " + id);
+        // Deleting the book.
         service.delete(id);
-        // Returning the all employees (post the deleted one).
+        // Returning the all book (post the deleted one).
         return findAll();
     }
 
