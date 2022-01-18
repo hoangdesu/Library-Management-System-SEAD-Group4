@@ -20,7 +20,7 @@ export default function Homepage() {
     return (
         <div>
             <div className="jumbotron1">
-                <h1 className="display-4">Our Library</h1>
+                <h1 className="display-5">RMIT Vietnam Library</h1>
                 <hr className="my-4" />
                 <p className="lead">The library houses over 700,000 offline and online resources and hosts several archives and digital exhibitions.
                     It is one of the largest English language libraries in Vietnam.</p>
@@ -28,26 +28,26 @@ export default function Homepage() {
             </div>
 
             <div className="div1 mt-5">
-                <h2 className="display-6">Search for the books and resources you need</h2>
+                <h2 className="display-6 mb-4">Search for the books and resources you need</h2>
 
-                <div class="search-container App">
+                <div className="search-container App">
                     <form action="/homepage">
-                        <input type="text" placeholder="Search.." name="search" className="searchBox rounded-pill" />
-                        <button type="submit" className="searchBt rounded-pill border-0"><i class="fa fa-search"></i></button>
+                        <input type="text" placeholder="Search the library..." name="search" className="searchBox rounded-pill" />
+                        <button type="submit" className="searchBt rounded-pill border-0"><i className="fa fa-search"></i></button>
                     </form>
                 </div>
 
-                <div class="row row-cols-1 row-cols-md-4 g-4 mt-1">
-                    <div class="col">
+                <div className="row row-cols-1 row-cols-md-4 g-4 mt-1">
+                    <div className="col">
                         <Feature title="Log into your library account" content="Log in to access your borrowing record, and to find resources." />
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <Feature title="Chat to a librarian" content="Ask about how the library operates and find out more about its collections" />
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <Feature title="Consult with a Librarian" content="Get help with assignments and research, including subject searches." />
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <Feature title="Book a meeting room" content="Book meeting rooms for groups inside our libraries." />
                     </div>
                 </div>
@@ -95,18 +95,18 @@ export default function Homepage() {
 
             <div className="jumbotron3">
                 <h5 className="lead"><strong>Contact Us</strong></h5>
-                <div class="row row-cols-lg-4 g-2 g-lg-3">
-                    <div class="col">
-                        <div class="pt-3"><i class="fa fa-facebook-f fa-lg pr-3" /><a href="" className="text-dark">Follow us on Facebook</a></div>
+                <div className="row row-cols-lg-4 g-2 g-lg-3">
+                    <div className="col">
+                        <div className="pt-3"><i className="fa fa-facebook-f fa-lg pr-3" /><a href="" className="text-dark">Follow us on Facebook</a></div>
                     </div>
-                    <div class="col">
-                        <div class="p-3"><i class="fa fa-youtube fa-lg pr-3" /><a href="" className="text-dark">Our YouTube channel</a></div>
+                    <div className="col">
+                        <div className="p-3"><i className="fa fa-youtube fa-lg pr-3" /><a href="" className="text-dark">Our YouTube channel</a></div>
                     </div>
-                    <div class="col">
-                        <div class="p-3"><i class="fa fa-twitter fa-lg pr-3" /><a href="" className="text-dark">Our Twitter channel</a></div>
+                    <div className="col">
+                        <div className="p-3"><i className="fa fa-twitter fa-lg pr-3" /><a href="" className="text-dark">Our Twitter channel</a></div>
                     </div>
-                    <div class="col">
-                        <div class="p-3"><i class="fa fa-map-marker fa-lg pr-3" /><a href="" className="text-dark">Visit us</a></div>
+                    <div className="col">
+                        <div className="p-3"><i className="fa fa-map-marker fa-lg pr-3" /><a href="" className="text-dark">Visit us</a></div>
                     </div>
                 </div>
             </div>

@@ -9,5 +9,7 @@ footer {
 
 .nav1 {
     padding: 15px 15% 0px 15%;
-    background-color: rgb(124, 86, 185);
+    background-color: rgb(43,15,66);
+    color: white;
+    /* padding: 20px; */
 }

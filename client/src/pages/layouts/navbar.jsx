@@ -9,9 +9,9 @@ export default function NavigationBar() {
 
     return (
         <div className="nav1">
-            <Navbar expand="lg" className="navbar">
+            <Navbar expand="lg" className="navbar navbar-dark pb-3">
                 <Container fluid>
-                    <Navbar.Brand href="/" className="title text-white">My Library</Navbar.Brand>
+                    <Navbar.Brand href="/" className="title text-white">Home</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         {/* LEFT ELEMENTS */}
@@ -20,20 +20,20 @@ export default function NavigationBar() {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link className="title text-white" href="/">Home</Nav.Link>
+                            {/* <Nav.Link className="title text-white" href="/">Home</Nav.Link> */}
                             <NavDropdown title="Books" id="navbarScrollingDropdown" className="title text-white">
                                 <NavDropdown.Item >Books</NavDropdown.Item>
-                                <NavDropdown.Item >Sub-categories</NavDropdown.Item>
-                                <NavDropdown.Item >Products</NavDropdown.Item>
+                                <NavDropdown.Item >Articles</NavDropdown.Item>
+                                <NavDropdown.Item >Journals</NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Something" id="navbarScrollingDropdown" className="title text-white">
+                            {/* <NavDropdown title="Something" id="navbarScrollingDropdown" className="title text-white">
                                 <NavDropdown.Item href="#">Categories</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Sub-categories</NavDropdown.Item>
-                            </NavDropdown>
+                            </NavDropdown> */}
                         </Nav>
 
                         {/* RIGHT ELEMENTS */}
-                        {Object.keys(auth.user).length == 0 ?
+                        {Object.keys(auth.user).length === 0 ?
                             // Not yet login
                             <div class="d-flex align-items-center">
                                 <button type="button" class="btn btn-link px-3 me-2" onclick="location.href='/login'">
@@ -46,7 +46,7 @@ export default function NavigationBar() {
                             :
                             // Logged in
                             <div class="d-flex align-items-center">
-                                <NavDropdown
+                                {/* <NavDropdown
                                     title={
                                         <span>
                                             <i className='fa fa-shopping-cart'></i>
@@ -55,7 +55,7 @@ export default function NavigationBar() {
                                     id='collasible-nav-dropdown'>
                                     <NavDropdown.Item href='#'>Action 1</NavDropdown.Item>
                                     <NavDropdown.Item href='#'>Action 2</NavDropdown.Item>
-                                </NavDropdown>
+                                </NavDropdown> */}
                                 <NavDropdown
                                     title={
                                         <span className="light">
@@ -64,8 +64,9 @@ export default function NavigationBar() {
                                         </span>
                                     }
                                     id='collasible-nav-dropdown 2'>
-                                    <NavDropdown.Item href='#'>Action 1</NavDropdown.Item>
-                                    <NavDropdown.Item href='#'>Action 2</NavDropdown.Item>
+                                    <NavDropdown.Item href='#'>Check notification</NavDropdown.Item>
+                                    {/* <NavDropdown.Item href='#'>Action 2</NavDropdown.Item> */}
+                                    
                                 </NavDropdown>
                                 <NavDropdown
                                     title={
