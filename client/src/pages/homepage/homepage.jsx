@@ -1,11 +1,16 @@
-import React from 'react';
+import { React, useState } from "react";
 import Slider from 'react-slick';
 import 'font-awesome/css/font-awesome.min.css';
 import '../../styles/homepage.css';
 import Card from './card';
 import Feature from './feature';
 
-export default function Homepage() {
+import { searchBook } from '../../api/searchService'
+
+
+export default function Homepage(props) {
+    const [title, setTitle] = useState("");
+
     const settings = {
         dots: true,
         infinite: true,
@@ -13,6 +18,10 @@ export default function Homepage() {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3500,
+    };
+
+    const handleSubmit = (event) => {
+        
     };
 
     return (
@@ -33,12 +42,16 @@ export default function Homepage() {
                 </h2>
 
                 <div className="search-container App">
-                    <form action="/homepage">
+                    <form 
+                        action="/homepage"
+                        onSubmit={handleSubmit}
+                    >
                         <input
                             type="text"
                             placeholder="Search the library..."
                             name="search"
                             className="searchBox rounded-pill"
+                            onChange={e => setTitle(e.target.value)}
                         />
                         <button
                             type="submit"
@@ -65,7 +78,7 @@ export default function Homepage() {
                     <div className="col">
                         <Feature
                             title="Consult with a Librarian"
-                            content="Get help with assignments and research, including subject searches."
+                            content="Get help with assignment       s and research, including subject searches."
                         />
                     </div>
                     <div className="col">
