@@ -67,12 +67,20 @@ public class BookController {
     }
 
     @GetMapping("/search")
-    public List<Book> getByName(@RequestParam(required = false) String title,
+    public List<Book> getBooks(@RequestParam(required = false) String title,
                                 @RequestParam(required = false) String category) {
         if (title != null) {
             return service.getBooksByName(title);
-        } else {
+        } else if (category != null) {
             return service.getBooksByCategory(category);
+        } else {
+            return service.getOnStockBooks();
         }
+    }
+
+    @GetMapping("/search/price-range")
+    public List<Book> getBooksByPrice(@RequestParam(required = false) double start,
+                                      @RequestParam(required = false) double end) {
+        return service.getBooksByPriceRange(start, end);
     }
 }

@@ -120,4 +120,28 @@ public class BookService implements BookRepo {
         }
         return result;
     }
+
+    @Override
+    public List<Book> getOnStockBooks() {
+        List<Book> result = new ArrayList<>();
+        List<Book> books = new ArrayList<>(hashOperations.entries(BOOK_CACHE).values());
+        for (Book book : books) {
+            if (book.getNumberStocks() > 0) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<Book> getBooksByPriceRange(Double start, double end) {
+        List<Book> result = new ArrayList<>();
+        List<Book> books = new ArrayList<>(hashOperations.entries(BOOK_CACHE).values());
+        for (Book book : books) {
+            if (book.getPrice() >= start && book.getPrice() <= end) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
 }

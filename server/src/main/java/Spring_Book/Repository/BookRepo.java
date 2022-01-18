@@ -24,4 +24,6 @@ public interface BookRepo {
     void deleteFromRedis(Long id);
     List<Book> getBooksByName(String name);
     List<Book> getBooksByCategory(String category);
+    List<Book> getOnStockBooks();
+    List<Book> getBooksByPriceRange(Double start, double end);
 }
