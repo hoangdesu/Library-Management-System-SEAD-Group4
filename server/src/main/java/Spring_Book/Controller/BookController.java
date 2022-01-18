@@ -20,7 +20,7 @@ public class BookController {
     @Autowired
     BookService service;
 
-    // Save a new employee.
+    // Save a new book.
     // Url - http://localhost:10091/api/redis/book
     @PostMapping
     public String save(@RequestBody final Book book) {
@@ -29,7 +29,7 @@ public class BookController {
         return "Successfully added. book with id= " + book.getId();
     }
 
-    // Get all employees.
+    // Get all books.
     // Url - http://localhost:10091/api/redis/book/getall
     @GetMapping("/getall")
     public Map<Long, Book> findAll() {
@@ -39,7 +39,7 @@ public class BookController {
         return bookMap;
     }
 
-    // Get employee by id.
+    // Get books by id.
     // Url - http://localhost:10091/api/redis/book/get/<book_id>
     @GetMapping("/get/{id}")
     public Book findById(@PathVariable("id") final Long id) {
@@ -47,8 +47,8 @@ public class BookController {
         return service.findById(id);
     }
 
-    // Delete employee by id.
-    // Url - http://localhost:10091/api/redis/employee/delete/<book_id>
+    // Delete book by id.
+    // Url - http://localhost:10091/api/redis/book/delete/<book_id>
     @DeleteMapping("/delete/{id}")
     public Map<Long, Book> delete(@PathVariable("id") final Long id) {
         LOG.info("Deleting book with id= " + id);
