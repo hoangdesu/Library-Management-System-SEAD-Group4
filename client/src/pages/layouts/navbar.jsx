@@ -3,9 +3,27 @@ import { useSelector } from "react-redux";
 import "../../styles/layout.css"
 import 'font-awesome/css/font-awesome.min.css';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { useEffect } from "react";
+import { getUserInfo } from "../../redux/reducers/auth";
+import { useDispatch } from "react-redux";
+import { getToken } from "../../api/authenticationService";
+import { useHistory } from "react-router-dom";
 
 export default function NavigationBar() {
+    const dispatch = useDispatch();
+    let history = useHistory();
+
+    useEffect(() => {
+        if (getToken() !== null) {
+            dispatch(getUserInfo())
+        }
+    }, []);
+
     const auth = useSelector(state => state.auth)
+
+    const onLogoutClicked = () => {
+        localStorage.clear();
+    }
 
     return (
         <div className="nav1">
@@ -33,7 +51,7 @@ export default function NavigationBar() {
                         </Nav>
 
                         {/* RIGHT ELEMENTS */}
-                        {Object.keys(auth.user).length === 0 ?
+                        {Object.keys(auth.userInfo).length === 0 ?
                             // Not yet login
                             <div class="d-flex align-items-center">
                                 <button type="button" class="btn btn-link px-3 me-2" onclick="location.href='/login'">
@@ -66,7 +84,7 @@ export default function NavigationBar() {
                                     id='collasible-nav-dropdown 2'>
                                     <NavDropdown.Item href='#'>Check notification</NavDropdown.Item>
                                     {/* <NavDropdown.Item href='#'>Action 2</NavDropdown.Item> */}
-                                    
+
                                 </NavDropdown>
                                 <NavDropdown
                                     title={
@@ -80,8 +98,10 @@ export default function NavigationBar() {
                                         </span>
                                     }
                                     id='collasible-nav-dropdown'>
+                                    <NavDropdown.Item>{auth.userInfo.userName}</NavDropdown.Item>
+                                    <hr />
                                     <NavDropdown.Item href='/user-profile'>User Profile</NavDropdown.Item>
-                                    <NavDropdown.Item href='#'>Logout</NavDropdown.Item>
+                                    <NavDropdown.Item href='/' onClick={() => onLogoutClicked()}>Logout</NavDropdown.Item>
                                 </NavDropdown>
                             </div>
                         }
@@ -90,5 +110,6 @@ export default function NavigationBar() {
                 </Container>
             </Navbar>
         </div>
+
     )
 }

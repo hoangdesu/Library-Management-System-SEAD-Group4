@@ -3,7 +3,7 @@ import "../../styles/user-profile.css"
 import 'font-awesome/css/font-awesome.min.css';
 import Popup from "../layouts/popup";
 import { useDispatch, useSelector } from "react-redux"
-import { findUserById, updateUser } from "../../redux/reducers/auth";
+import { findUserById, getUserInfo, updateUser } from "../../redux/reducers/auth";
 import $ from "jquery"
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function UserProfile() {
 
-    const user = useSelector(state => state.auth.user)
+    const user = useSelector(state => state.auth.userInfo)
     const disatch = useDispatch();
 
     const [temp, setTemp] = useState(user);
@@ -22,13 +22,20 @@ export default function UserProfile() {
     }, [change])
 
     const onSaveClicked = () => {
-        disatch(updateUser(user.id, {
+        // disatch(updateUser(user.id, {
+        //     ...temp
+        // })).then(response => {
+        //     disatch(findUserById(response.id)).then(res => {
+        //         toast.success("User info updated successfully");
+        //         change === true ? setChange(false) : setChange(true);
+        //     })
+        // })
+
+        disatch(updateUser({
             ...temp
-        })).then(response => {
-            disatch(findUserById(response.id)).then(res => {
-                toast.success("User info updated successfully");
-                change === true ? setChange(false) : setChange(true);
-            })
+        })).then(res => {
+            disatch(getUserInfo());
+            change === true ? setChange(false) : setChange(true);
         })
     }
 
@@ -47,17 +54,17 @@ export default function UserProfile() {
         } else if (oldPass !== user.USER_KEY) {
             toast.warning("Current password not correct");
         } else {
-            disatch(updateUser(user.id, {
-                ...temp, USER_KEY: newPass
-            })).then(response => {
-                disatch(findUserById(response.id)).then(res => {
-                    toast.success("Password updated successfully");
-                    change === true ? setChange(false) : setChange(true);
-                    $("#oldPass").val("");
-                    $("#newPass").val("");
-                    $("#confirmPass").val("");
-                })
-            })
+            // disatch(updateUser(user.id, {
+            //     ...temp, USER_KEY: newPass
+            // })).then(response => {
+            //     disatch(findUserById(response.id)).then(res => {
+            //         toast.success("Password updated successfully");
+            //         change === true ? setChange(false) : setChange(true);
+            //         $("#oldPass").val("");
+            //         $("#newPass").val("");
+            //         $("#confirmPass").val("");
+            //     })
+            // })
         }
     }
 
@@ -68,7 +75,7 @@ export default function UserProfile() {
                 <div className="tab nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <div className="App">
                         <img className="avatar rounded-circle border" src="https://icons-for-free.com/iconfiles/png/512/human+person+user+icon-1320196276306824343.png" alt="avatar unavailable" />
-                        <h5>{user.first_name + " " + user.last_name}</h5>
+                        <h5>{user.userName}</h5>
                         <hr className="my-3" />
                     </div>
                     <button className="nav-link active" id="acc-settings-tab" data-bs-toggle="pill" data-bs-target="#acc-settings" type="button" role="tab" aria-controls="acc-settings" aria-selected="true">Account Settings</button>
@@ -88,19 +95,19 @@ export default function UserProfile() {
                             <div class="col-6">
                                 <label for="firstName" class="col-sm-4 col-form-label"><strong>First name</strong></label>
                                 <div class="col-sm-10">
-                                    <input id="firstName" class="form-control" type="text" value={user.first_name} readonly />
+                                    <input id="firstName" class="form-control" type="text" value={user.firstName} readonly />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <label for="lastName" class="col-sm-4 col-form-label"><strong>Last name</strong></label>
                                 <div class="col-sm-10">
-                                    <input id="lastName" class="form-control" type="text" value={user.last_name} readonly />
+                                    <input id="lastName" class="form-control" type="text" value={user.lastName} readonly />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <label for="username" class="col-sm-4 col-form-label"><strong>Username</strong></label>
                                 <div class="col-sm-10">
-                                    <input id="username" class="form-control" type="text" value={user.USER_NAME} readonly />
+                                    <input id="username" class="form-control" type="text" value={user.userName} readonly />
                                 </div>
                             </div>
 
@@ -113,7 +120,7 @@ export default function UserProfile() {
                             <div class="col-6">
                                 <label for="phoneNo" class="col-sm-5 col-form-label"><strong>Phone number</strong></label>
                                 <div class="col-sm-10">
-                                    <input id="phoneNo" class="form-control" type="text" value={user.phone_number} readonly />
+                                    <input id="phoneNo" class="form-control" type="text" value={user.phoneNumber} readonly />
                                 </div>
                             </div>
                         </div>
@@ -133,20 +140,20 @@ export default function UserProfile() {
                                         <form class="row g-3">
                                             <div class="col-md-6">
                                                 <label for="inputFirstname" class="form-label">First name</label>
-                                                <input type="text" class="form-control" id="inputFirstname" value={temp.first_name} onChange={(e) => setTemp({
-                                                    ...temp, first_name: e.target.value
+                                                <input type="text" class="form-control" id="inputFirstname" value={temp.firstName} onChange={(e) => setTemp({
+                                                    ...temp, firstName: e.target.value
                                                 })} />
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="inputLastname" class="form-label">Last name</label>
-                                                <input type="text" class="form-control" id="inputLastname" value={temp.last_name} onChange={(e) => setTemp({
-                                                    ...temp, last_name: e.target.value
+                                                <input type="text" class="form-control" id="inputLastname" value={temp.lastName} onChange={(e) => setTemp({
+                                                    ...temp, lastName: e.target.value
                                                 })} />
                                             </div>
                                             <div class="col-12">
                                                 <label for="inputUsername" class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="inputUsername" value={temp.USER_NAME} onChange={(e) => setTemp({
-                                                    ...temp, USER_NAME: e.target.value
+                                                <input type="text" class="form-control" id="inputUsername" value={temp.userName} onChange={(e) => setTemp({
+                                                    ...temp, userName: e.target.value
                                                 })} />
                                             </div>
                                             <div class="col-md-6">
@@ -157,8 +164,8 @@ export default function UserProfile() {
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="inputPhone" class="form-label">Phone number</label>
-                                                <input type="tel" class="form-control" id="inputPhone" pattern="[0-9]{4} [0-9]{3} [0-9]{3}" maxLength="12" value={temp.phone_number} onChange={(e) => setTemp({
-                                                    ...temp, phone_number: e.target.value
+                                                <input type="tel" class="form-control" id="inputPhone" pattern="[0-9]{4} [0-9]{3} [0-9]{3}" maxLength="12" value={temp.phoneNumber} onChange={(e) => setTemp({
+                                                    ...temp, phoneNumber: e.target.value
                                                 })} />
                                             </div>
                                         </form>

@@ -1,11 +1,16 @@
-import React from 'react';
+import { React, useState } from "react";
 import Slider from 'react-slick';
 import 'font-awesome/css/font-awesome.min.css';
 import '../../styles/homepage.css';
 import Card from './card';
 import Feature from './feature';
 
-export default function Homepage() {
+import { searchBook } from '../../api/searchService'
+
+
+export default function Homepage(props) {
+    const [title, setTitle] = useState("");
+
     const settings = {
         dots: true,
         infinite: true,
@@ -13,6 +18,10 @@ export default function Homepage() {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3500,
+    };
+
+    const handleSubmit = (event) => {
+        
     };
 
     return (
@@ -33,12 +42,16 @@ export default function Homepage() {
                 </h2>
 
                 <div className="search-container App">
-                    <form action="/homepage">
+                    <form 
+                        action="/homepage"
+                        onSubmit={handleSubmit}
+                    >
                         <input
                             type="text"
                             placeholder="Search the library..."
                             name="search"
                             className="searchBox rounded-pill"
+                            onChange={e => setTitle(e.target.value)}
                         />
                         <button
                             type="submit"
@@ -65,7 +78,7 @@ export default function Homepage() {
                     <div className="col">
                         <Feature
                             title="Consult with a Librarian"
-                            content="Get help with assignments and research, including subject searches."
+                            content="Get help with assignment       s and research, including subject searches."
                         />
                     </div>
                     <div className="col">
@@ -78,7 +91,7 @@ export default function Homepage() {
             </div>
 
             <div className="jumbotron2 card bg-dark text-white mt-5">
-                <img className="card-img" src="library.png" alt="Card image" />
+                <img className="card-img" src="library.png" alt="online resources" />
                 <div className="card-img-overlay">
                     <div>
                         <h5 className="card-title display-6">
@@ -154,7 +167,7 @@ export default function Homepage() {
                     <div className="col">
                         <div className="pt-3">
                             <i className="fa fa-facebook-f fa-lg pr-3" />
-                            <a href="" className="text-dark">
+                            <a href="https://www.facebook.com/" className="text-dark">
                                 Follow us on Facebook
                             </a>
                         </div>
@@ -162,7 +175,7 @@ export default function Homepage() {
                     <div className="col">
                         <div className="p-3">
                             <i className="fa fa-youtube fa-lg pr-3" />
-                            <a href="" className="text-dark">
+                            <a href="https://www.youtube.com/" className="text-dark">
                                 Our YouTube channel
                             </a>
                         </div>
@@ -170,7 +183,7 @@ export default function Homepage() {
                     <div className="col">
                         <div className="p-3">
                             <i className="fa fa-twitter fa-lg pr-3" />
-                            <a href="" className="text-dark">
+                            <a href="https://twitter.com/home" className="text-dark">
                                 Our Twitter channel
                             </a>
                         </div>
@@ -178,7 +191,7 @@ export default function Homepage() {
                     <div className="col">
                         <div className="p-3">
                             <i className="fa fa-map-marker fa-lg pr-3" />
-                            <a href="" className="text-dark">
+                            <a href="https://www.rmit.edu.vn/libraryvn" className="text-dark">
                                 Visit us
                             </a>
                         </div>

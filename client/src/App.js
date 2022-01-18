@@ -7,6 +7,7 @@ import Footer from './pages/layouts/footer';
 import UserProfile from './pages/user/UserProfile';
 import Counter from './pages/Counter';
 import NavigationBar from './pages/layouts/navbar';
+import Book from './pages/display/book';
 
 function App() {
     return (
@@ -16,9 +17,10 @@ function App() {
                 <Switch>
                     <Route exact path="/login" component={LoginPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/book" component={Book} />
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/user-profile" component={UserProfile} />
-                    <Route exact path="/counter" component={Counter} /> {/* Testing redux */}
+                    {/* <Route exact path="/counter" component={Counter} /> Testing redux */}
                 </Switch>
             </BrowserRouter>
             <Footer />

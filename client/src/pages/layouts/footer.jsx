@@ -7,18 +7,18 @@ export default function Footer() {
         <footer className="text-center text-white">
             <div className="container pt-4 pb-0">
                 <section className="mb-4">
-                    <a className="btn btn-outline-light btn-floating m-1 icon" href="#" role="button">
+                    <a className="btn btn-outline-light btn-floating m-1 icon" href="https://www.facebook.com/" role="button">
                         <i className="fa fa-facebook-f"></i></a>
-                    <a className="btn btn-outline-light btn-floating m-1 icon" href="#" role="button">
+                    <a className="btn btn-outline-light btn-floating m-1 icon" href="https://twitter.com/home" role="button">
                         <i className="fa fa-twitter"></i></a>
 
-                    <a className="btn btn-outline-light btn-floating m-1 icon" href="#" role="button">
+                    <a className="btn btn-outline-light btn-floating m-1 icon" href="https://www.google.com/" role="button">
                         <i className="fa fa-google"></i></a>
 
-                    <a className="btn btn-outline-light btn-floating m-1 icon" href="#" role="button">
+                    <a className="btn btn-outline-light btn-floating m-1 icon" href="https://www.instagram.com/" role="button">
                         <i className="fa fa-instagram"></i></a>
 
-                    <a className="btn btn-outline-light btn-floating m-1 icon" href="#" role="button">
+                    <a className="btn btn-outline-light btn-floating m-1 icon" href="https://www.linkedin.com/" role="button">
                         <i className="fa fa-linkedin"></i></a>
 
                     <a className="btn btn-outline-light btn-floating m-1 icon" href="https://github.com/hoangdesu/Library-Management-System-SEAD-Group4" role="button">
