@@ -23,13 +23,10 @@ public class Consumer {
         logger.info(String.format("#### -> Consumed message -> %s", message));
 
         //save message to database
-        Book city = new Book(message);
+        Book book = new Book(message);
 
-        bookRepository.save(city);
+        bookRepository.save(book);
 
-        logger.info(String.format("#### -> ID message -> %s", city.getId()));
-
-
-
+        logger.info(String.format("#### -> ID message -> %s", book.getId()));
     }
 }

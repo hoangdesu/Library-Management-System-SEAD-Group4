@@ -5,7 +5,7 @@
 }
 
 .div1{
-    margin: 0 17% 0 17%;
+    margin: 0 15%;
 }
 
 .jumbotron2 > div > div {
@@ -38,4 +38,10 @@
 .jumbotron3{
     background-color: rgb(255,238,230);
     padding: 80px 17% 50px 17%;
+}
+
+.about-us {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
