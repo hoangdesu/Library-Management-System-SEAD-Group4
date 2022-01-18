@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Library-Management-System-SEAD-Group4/static/css/main.84bd1e44.chunk.css",
+    "main.js": "/Library-Management-System-SEAD-Group4/static/js/main.a3270a29.chunk.js",
+    "main.js.map": "/Library-Management-System-SEAD-Group4/static/js/main.a3270a29.chunk.js.map",
+    "runtime-main.js": "/Library-Management-System-SEAD-Group4/static/js/runtime-main.0490b7e2.js",
+    "runtime-main.js.map": "/Library-Management-System-SEAD-Group4/static/js/runtime-main.0490b7e2.js.map",
+    "static/css/2.c4a1eed3.chunk.css": "/Library-Management-System-SEAD-Group4/static/css/2.c4a1eed3.chunk.css",
+    "static/js/2.62c58ba9.chunk.js": "/Library-Management-System-SEAD-Group4/static/js/2.62c58ba9.chunk.js",
+    "static/js/2.62c58ba9.chunk.js.map": "/Library-Management-System-SEAD-Group4/static/js/2.62c58ba9.chunk.js.map",
+    "index.html": "/Library-Management-System-SEAD-Group4/index.html",
+    "static/css/2.c4a1eed3.chunk.css.map": "/Library-Management-System-SEAD-Group4/static/css/2.c4a1eed3.chunk.css.map",
+    "static/css/main.84bd1e44.chunk.css.map": "/Library-Management-System-SEAD-Group4/static/css/main.84bd1e44.chunk.css.map",
+    "static/js/2.62c58ba9.chunk.js.LICENSE.txt": "/Library-Management-System-SEAD-Group4/static/js/2.62c58ba9.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/Library-Management-System-SEAD-Group4/static/media/fontawesome-webfont.f691f37e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0490b7e2.js",
+    "static/css/2.c4a1eed3.chunk.css",
+    "static/js/2.62c58ba9.chunk.js",
+    "static/css/main.84bd1e44.chunk.css",
+    "static/js/main.a3270a29.chunk.js"
+  ]
+}
