@@ -2,7 +2,7 @@ import requests
 import json
 
 bookId = 1
-totalBooks = 1000
+totalBooks = 1000000
 book_list = []
 
 while bookId <= totalBooks:

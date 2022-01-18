@@ -20,7 +20,7 @@ function App() {
                     <Route exact path="/book" component={Book} />
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/user-profile" component={UserProfile} />
-                    {/* <Route exact path="/counter" component={Counter} /> Testing redux */}
+                    <Route exact path="/Library-Management-System-SEAD-Group4" component={Homepage} />
                 </Switch>
             </BrowserRouter>
             <Footer />
