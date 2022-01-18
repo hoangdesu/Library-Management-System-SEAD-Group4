@@ -6,6 +6,7 @@ import { getToken } from '../../api/authenticationService';
 // ENDPOINTS
 const userEndpoint = "/users"
 const authPatch = "/auth"
+const bookEndpoint = "/book"
 
 // TYPES
 const GET_USER = "GET_USER";
@@ -13,6 +14,8 @@ const RETRIEVE_USERS = "RETRIEVE_USERS";
 const UPDATE_USER = "UPDATE_USER";
 const DELETE_USER = "DELETE_USER";
 const CURR_USER_INFO = "CURR_USER_INFO";
+
+const SEARCH_BOOK_TITLE = "SEARCH_BOOK_TITLE";
 
 // REDUCERS
 const initialState = {
@@ -84,6 +87,21 @@ export const getUserInfo = () => async (dispatch) => {
         }).then(res => {
             dispatch({
                 type: CURR_USER_INFO,
+                payload: res.data
+            })
+        })
+    } catch (err) {
+        return console.log(err.response)
+    }
+}
+
+export const searchBookByTitle = () => async (dispatch) => {
+    try {
+        await http.get(authPatch + "/search", {
+            headers: { 'Authorization': 'Bearer ' + getToken() }
+        }).then(res => {
+            dispatch({
+                type: SEARCH_BOOK_TITLE,
                 payload: res.data
             })
         })

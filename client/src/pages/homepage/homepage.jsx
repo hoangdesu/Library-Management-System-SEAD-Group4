@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import Slider from 'react-slick';
 import 'font-awesome/css/font-awesome.min.css';
 import '../../styles/homepage.css';
@@ -6,6 +6,8 @@ import Card from './card';
 import Feature from './feature';
 
 export default function Homepage() {
+    const [title, setTitle] = useState("");
+
     const settings = {
         dots: true,
         infinite: true,
@@ -13,6 +15,10 @@ export default function Homepage() {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3500,
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
     };
 
     return (
@@ -39,10 +45,13 @@ export default function Homepage() {
                             placeholder="Search the library..."
                             name="search"
                             className="searchBox rounded-pill"
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
                         />
                         <button
                             type="submit"
                             className="searchBt rounded-pill border-0"
+                            onSubmit={handleSubmit}
                         >
                             <i className="fa fa-search"></i>
                         </button>
