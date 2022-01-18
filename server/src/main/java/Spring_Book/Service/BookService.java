@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.transaction.Transactional;
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Transactional
@@ -41,6 +43,7 @@ public class BookService implements BookRepo {
     public void save(final Book book) {
 //        hashOperations.put(BOOK_CACHE, book.getId(), book);
         bookDBRepository.save(book);
+        saveToCache(book);
     }
 
     //Save to Cache operation
@@ -92,5 +95,53 @@ public class BookService implements BookRepo {
     @Override
     public void deleteFromRedis(Long id) {
         hashOperations.delete(BOOK_CACHE, id);
+    }
+
+    @Override
+    public List<Book> getBooksByName(String name) {
+        List<Book> result = new ArrayList<>();
+        List<Book> books = new ArrayList<>(hashOperations.entries(BOOK_CACHE).values());
+        for (Book book : books) {
+            if (book.getName().contains(name)) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<Book> getBooksByCategory(String category) {
+        List<Book> result = new ArrayList<>();
+        List<Book> books = new ArrayList<>(hashOperations.entries(BOOK_CACHE).values());
+        for (Book book : books) {
+            if (book.getCategory().equals(category)) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<Book> getOnStockBooks() {
+        List<Book> result = new ArrayList<>();
+        List<Book> books = new ArrayList<>(hashOperations.entries(BOOK_CACHE).values());
+        for (Book book : books) {
+            if (book.getNumberStocks() > 0) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<Book> getBooksByPriceRange(Double start, double end) {
+        List<Book> result = new ArrayList<>();
+        List<Book> books = new ArrayList<>(hashOperations.entries(BOOK_CACHE).values());
+        for (Book book : books) {
+            if (book.getPrice() >= start && book.getPrice() <= end) {
+                result.add(book);
+            }
+        }
+        return result;
     }
 }

@@ -3,6 +3,7 @@ package Spring_Book.Repository;
 
 import Spring_Book.Model.Book;
 
+import java.util.List;
 import java.util.Map;
 
 //For Redis usage
@@ -21,4 +22,8 @@ public interface BookRepo {
     void delete(Long id);
 
     void deleteFromRedis(Long id);
+    List<Book> getBooksByName(String name);
+    List<Book> getBooksByCategory(String category);
+    List<Book> getOnStockBooks();
+    List<Book> getBooksByPriceRange(Double start, double end);
 }

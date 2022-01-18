@@ -35,6 +35,7 @@ public class UserSerivce implements UserRepo {
     public void save(final Person person) {
 //        hashOperations.put(BOOK_CACHE, book.getId(), book);
         userRepository.save(person);
+        saveToCache(person);
     }
 
     //Save to Cache operation

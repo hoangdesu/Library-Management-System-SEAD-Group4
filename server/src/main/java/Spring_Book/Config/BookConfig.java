@@ -1,7 +1,9 @@
 package Spring_Book.Config;
 
 import Spring_Book.Model.Book;
+import Spring_Book.Repository.BookRepo;
 import Spring_Book.Repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +14,8 @@ import java.util.List;
 
 @Configuration
 public class BookConfig {
-
+    @Autowired
+    private BookRepo bookRepo;
     //    private Long id;
     //    private String name;
     //    private float price;
@@ -133,7 +136,11 @@ public class BookConfig {
                     LocalDate.of(2017, Month.JANUARY, 8),
                     LocalDate.of(2020, Month.JANUARY, 16)
             );
-            bookRepository.saveAll(List.of(book1, book2, book3, book4, book5, book6, book7, book8, book9, book10));
+            List<Book> books = List.of(book1, book2, book3, book4, book5, book6, book7, book8, book9, book10);
+            for (Book book: books) {
+                bookRepo.save(book);
+            }
+//            bookRepository.saveAll(List.of(book1, book2, book3, book4, book5, book6, book7, book8, book9, book10));
         };
     }
 }
