@@ -4,7 +4,7 @@ import http from "../../http-common";
 import { getToken } from '../../api/authenticationService';
 
 // ENDPOINTS
-const userEndpoint = "/users"
+const userEndpoint = "/user"
 const authPatch = "/auth"
 
 // TYPES
@@ -17,19 +17,11 @@ const CURR_USER_INFO = "CURR_USER_INFO";
 // REDUCERS
 const initialState = {
     user: {
-        // "id": 1,
-        // "USER_NAME": "duc123",
-        // "USER_KEY": "password",
-        // "first_name": "duc",
-        // "last_name": "nguyen trung",
-        // "email": "ntduc@gmail.com",
-        // "phone_number": "0192122121"
     },
     userInfo: {},
     error: '',
     loading: false
 };
-
 
 
 const auth = (state = initialState, action) => {
@@ -64,18 +56,6 @@ const auth = (state = initialState, action) => {
 export default auth;
 
 
-// export const retrieveUsers = () => async (dispatch) => {
-//     try {
-//         const res = await Service.getAll(userEndpoint);
-
-//         dispatch({
-//             type: RETRIEVE_USERS,
-//             payload: res.data,
-//         });
-//     } catch (err) {
-//         console.log(err);
-//     }
-// };
 // ACTIONS
 export const getUserInfo = () => async (dispatch) => {
     try {
@@ -92,18 +72,18 @@ export const getUserInfo = () => async (dispatch) => {
     }
 }
 
-export const updateUser = (id, data) => async (dispatch) => {
+export const updateUser = (data) => async (dispatch) => {
     try {
-        // const res = await Service.update(id, data, userEndpoint);
-
-        // dispatch({
-        //     type: UPDATE_USER,
-        //     payload: data,
-        // });
-
-        // return Promise.resolve(res.data);
+        await http.put(userEndpoint, data, {
+            headers: { 'Authorization': 'Bearer ' + getToken() }
+        }).then(res => {
+            dispatch({
+                type: UPDATE_USER,
+                payload: res.data
+            })
+        })
     } catch (err) {
-        return Promise.reject(err);
+        return console.log(err.response)
     }
 };
 

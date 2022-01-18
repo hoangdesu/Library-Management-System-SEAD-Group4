@@ -18,7 +18,7 @@ function App() {
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/user-profile" component={UserProfile} />
-                    <Route exact path="/counter" component={Counter} /> {/* Testing redux */}
+                    {/* <Route exact path="/counter" component={Counter} /> Testing redux */}
                 </Switch>
             </BrowserRouter>
             <Footer />

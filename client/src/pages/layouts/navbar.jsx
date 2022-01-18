@@ -7,9 +7,11 @@ import { useEffect } from "react";
 import { getUserInfo } from "../../redux/reducers/auth";
 import { useDispatch } from "react-redux";
 import { getToken } from "../../api/authenticationService";
+import { useHistory } from "react-router-dom";
 
 export default function NavigationBar() {
     const dispatch = useDispatch();
+    let history = useHistory();
 
     useEffect(() => {
         if (getToken() !== null) {
@@ -18,6 +20,10 @@ export default function NavigationBar() {
     }, []);
 
     const auth = useSelector(state => state.auth)
+
+    const onLogoutClicked = () => {
+        localStorage.clear();
+    }
 
     return (
         <div className="nav1">
@@ -92,8 +98,10 @@ export default function NavigationBar() {
                                         </span>
                                     }
                                     id='collasible-nav-dropdown'>
+                                    <NavDropdown.Item>{auth.userInfo.userName}</NavDropdown.Item>
+                                    <hr />
                                     <NavDropdown.Item href='/user-profile'>User Profile</NavDropdown.Item>
-                                    <NavDropdown.Item href='#'>Logout</NavDropdown.Item>
+                                    <NavDropdown.Item href='/' onClick={() => onLogoutClicked()}>Logout</NavDropdown.Item>
                                 </NavDropdown>
                             </div>
                         }
@@ -102,5 +110,6 @@ export default function NavigationBar() {
                 </Container>
             </Navbar>
         </div>
+
     )
 }
