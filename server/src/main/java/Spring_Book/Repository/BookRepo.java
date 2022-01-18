@@ -19,4 +19,6 @@ public interface BookRepo {
 
     // Delete a employee.
     void delete(Long id);
+
+    void deleteFromRedis(Long id);
 }

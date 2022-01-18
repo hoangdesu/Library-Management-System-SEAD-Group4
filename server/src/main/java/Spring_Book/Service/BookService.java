@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Transactional
 @Service
-@RequestMapping(path = "api/v1/book")
+//@RequestMapping(path = "api/v1/book")
 public class BookService implements BookRepo {
 
     private final String BOOK_CACHE = "BOOK";
@@ -25,7 +25,9 @@ public class BookService implements BookRepo {
     @Autowired
     RedisTemplate<String, Object> redisTemplate;
     private HashOperations<String, Long, Book> hashOperations;
-    BookRepository bookDBRepository;
+
+    @Autowired
+    private BookRepository bookDBRepository;
 
     // This annotation makes sure that the method needs to be executed after
     // dependency injection is done to perform any initialization.
@@ -42,17 +44,18 @@ public class BookService implements BookRepo {
     }
 
     //Save to Cache operation
-    public void saveToCache(final Book book){
+    private void saveToCache(final Book book){
         hashOperations.put(BOOK_CACHE, book.getId(), book);
     }
 
     //get a book by Id
-    public Book getBook(Long id){
+    private Book getBook(Long id){
         Book book = null;
         try{
             book = this.bookDBRepository.findById(id)
                     .orElseThrow(() -> new Exception("Book not found for this id "+ id));
         }catch (Exception e){
+            System.out.println("Ưtf");
             e.printStackTrace();
         }
         return book;
@@ -66,7 +69,8 @@ public class BookService implements BookRepo {
         if (book != null){
             return book;
         }else{
-            Book book1 = this.getBook(Long.valueOf(id));
+            System.out.println("Run this ;VVVVVVVVVVVVVVVVVV");
+            Book book1 = this.getBook(id);
             saveToCache(book1);
             return book1;
         }
@@ -82,6 +86,11 @@ public class BookService implements BookRepo {
     @Override
     public void delete(Long id) {
         hashOperations.delete(BOOK_CACHE, id);
+        bookDBRepository.delete(getBook(id));
     }
 
+    @Override
+    public void deleteFromRedis(Long id) {
+        hashOperations.delete(BOOK_CACHE, id);
+    }
 }
