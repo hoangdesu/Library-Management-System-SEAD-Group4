@@ -66,5 +66,13 @@ public class BookController {
         return findAll();
     }
 
-
+    @GetMapping("/search")
+    public List<Book> getByName(@RequestParam(required = false) String title,
+                                @RequestParam(required = false) String category) {
+        if (title != null) {
+            return service.getBooksByName(title);
+        } else {
+            return service.getBooksByCategory(category);
+        }
+    }
 }
