@@ -3,8 +3,20 @@ import { useSelector } from "react-redux";
 import "../../styles/layout.css"
 import 'font-awesome/css/font-awesome.min.css';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { useEffect } from "react";
+import { getUserInfo } from "../../redux/reducers/auth";
+import { useDispatch } from "react-redux";
+import { getToken } from "../../api/authenticationService";
 
 export default function NavigationBar() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (getToken() !== null) {
+            dispatch(getUserInfo())
+        }
+    }, []);
+
     const auth = useSelector(state => state.auth)
 
     return (
@@ -33,7 +45,7 @@ export default function NavigationBar() {
                         </Nav>
 
                         {/* RIGHT ELEMENTS */}
-                        {Object.keys(auth.user).length === 0 ?
+                        {Object.keys(auth.userInfo).length === 0 ?
                             // Not yet login
                             <div class="d-flex align-items-center">
                                 <button type="button" class="btn btn-link px-3 me-2" onclick="location.href='/login'">
@@ -66,7 +78,7 @@ export default function NavigationBar() {
                                     id='collasible-nav-dropdown 2'>
                                     <NavDropdown.Item href='#'>Check notification</NavDropdown.Item>
                                     {/* <NavDropdown.Item href='#'>Action 2</NavDropdown.Item> */}
-                                    
+
                                 </NavDropdown>
                                 <NavDropdown
                                     title={
