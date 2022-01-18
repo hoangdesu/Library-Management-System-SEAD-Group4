@@ -78,7 +78,7 @@ export default function Homepage() {
             </div>
 
             <div className="jumbotron2 card bg-dark text-white mt-5">
-                <img className="card-img" src="library.png" alt="Card image" />
+                <img className="card-img" src="library.png" alt="online resources" />
                 <div className="card-img-overlay">
                     <div>
                         <h5 className="card-title display-6">
@@ -154,7 +154,7 @@ export default function Homepage() {
                     <div className="col">
                         <div className="pt-3">
                             <i className="fa fa-facebook-f fa-lg pr-3" />
-                            <a href="" className="text-dark">
+                            <a href="https://www.facebook.com/" className="text-dark">
                                 Follow us on Facebook
                             </a>
                         </div>
@@ -162,7 +162,7 @@ export default function Homepage() {
                     <div className="col">
                         <div className="p-3">
                             <i className="fa fa-youtube fa-lg pr-3" />
-                            <a href="" className="text-dark">
+                            <a href="https://www.youtube.com/" className="text-dark">
                                 Our YouTube channel
                             </a>
                         </div>
@@ -170,7 +170,7 @@ export default function Homepage() {
                     <div className="col">
                         <div className="p-3">
                             <i className="fa fa-twitter fa-lg pr-3" />
-                            <a href="" className="text-dark">
+                            <a href="https://twitter.com/home" className="text-dark">
                                 Our Twitter channel
                             </a>
                         </div>
@@ -178,7 +178,7 @@ export default function Homepage() {
                     <div className="col">
                         <div className="p-3">
                             <i className="fa fa-map-marker fa-lg pr-3" />
-                            <a href="" className="text-dark">
+                            <a href="https://www.rmit.edu.vn/libraryvn" className="text-dark">
                                 Visit us
                             </a>
                         </div>
