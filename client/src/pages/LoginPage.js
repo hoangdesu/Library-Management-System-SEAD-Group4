@@ -4,8 +4,12 @@ import { authenticate, authFailure, authSuccess } from '../redux/authActions';
 import './loginpage.css';
 import { userLogin } from '../api/authenticationService';
 import { Alert, Spinner } from 'react-bootstrap';
+import { useDispatch } from "react-redux";
+import { getUserInfo } from "../redux/reducers/auth"
 
 const LoginPage = ({ loading, error, ...props }) => {
+    const dispatch = useDispatch()
+
     const [values, setValues] = useState({
         userName: '',
         password: '',
@@ -20,7 +24,8 @@ const LoginPage = ({ loading, error, ...props }) => {
                 console.log('response', response);
                 if (response.status === 200) {
                     props.setUser(response.data);
-                    props.history.push('/dashboard');
+                    props.history.push('/');
+                    dispatch(getUserInfo())
                 } else {
                     props.loginFailure('Something Wrong!Please Try Again');
                 }
