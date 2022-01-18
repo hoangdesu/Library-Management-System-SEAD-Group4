@@ -1,9 +1,15 @@
-import {AUTH_REQ,AUTH_SUCCESS,AUTH_FAILURE} from './types';
+import {AUTH_REQ,AUTH_SUCCESS,AUTH_FAILURE, SEARCH_REQ} from './types';
 
 
 export const authenticate=()=>{
     return {
         type:AUTH_REQ
+    }
+}
+
+export const search=()=>{
+    return {
+        type:SEARCH_REQ
     }
 }
 

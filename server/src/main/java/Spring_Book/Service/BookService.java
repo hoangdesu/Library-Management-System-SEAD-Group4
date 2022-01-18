@@ -34,7 +34,7 @@ public class BookService implements BookRepo {
     // This annotation makes sure that the method needs to be executed after
     // dependency injection is done to perform any initialization.
     @PostConstruct
-    private void intializeHashOperations() {
+    private void initializeHashOperations() {
         hashOperations = redisTemplate.opsForHash();
     }
 
