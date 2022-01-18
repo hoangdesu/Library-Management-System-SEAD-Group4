@@ -8,15 +8,15 @@ import java.util.Map;
 //For Redis usage
 public interface BookRepo {
 
-    // Save a new employee.
+    // Save a new book.
     void save(Book book);
 
-    // Find employee by id.
+    // Find book by id.
     Book findById(Long id);
 
-    // Final all employees.
+    // Final all book.
     Map<Long, Book> findAll();
 
-    // Delete a employee.
+    // Delete a book.
     void delete(Long id);
 }

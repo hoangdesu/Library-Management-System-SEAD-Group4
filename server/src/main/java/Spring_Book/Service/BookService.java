@@ -59,7 +59,7 @@ public class BookService implements BookRepo {
     }
 
 
-    // Find by employee id operation.
+    // Find by book id operation.
     @Override
     public Book findById(final Long id) {
         Book book = (Book) hashOperations.get(BOOK_CACHE, id);
@@ -72,13 +72,13 @@ public class BookService implements BookRepo {
         }
     }
 
-    // Find all employees operation.
+    // Find all book operation.
     @Override
     public Map<Long, Book> findAll() {
         return hashOperations.entries(BOOK_CACHE);
     }
 
-    // Delete employee by id operation.
+    // Delete book by id operation.
     @Override
     public void delete(Long id) {
         hashOperations.delete(BOOK_CACHE, id);
