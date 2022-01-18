@@ -34,8 +34,10 @@ export default function UserProfile() {
         disatch(updateUser({
             ...temp
         })).then(res => {
-            disatch(getUserInfo());
-            change === true ? setChange(false) : setChange(true);
+            disatch(getUserInfo()).then(res => {
+                toast.success("User info updated successfully");
+                change === true ? setChange(false) : setChange(true);
+            });
         })
     }
 
@@ -44,28 +46,29 @@ export default function UserProfile() {
     }
 
     const onSavePassword = () => {
-        const oldPass = $("#oldPass").val().trim();
-        const newPass = $("#newPass").val().trim();
-        const confirmPass = $("#confirmPass").val().trim();
-        if (oldPass === "" || newPass === "" || confirmPass === "") {
-            toast.warning("Please enter all required field");
-        } else if (newPass !== confirmPass) {
-            toast.warning("Confirm password not correct");
-        } else if (oldPass !== user.USER_KEY) {
-            toast.warning("Current password not correct");
-        } else {
-            // disatch(updateUser(user.id, {
-            //     ...temp, USER_KEY: newPass
-            // })).then(response => {
-            //     disatch(findUserById(response.id)).then(res => {
-            //         toast.success("Password updated successfully");
-            //         change === true ? setChange(false) : setChange(true);
-            //         $("#oldPass").val("");
-            //         $("#newPass").val("");
-            //         $("#confirmPass").val("");
-            //     })
-            // })
-        }
+        // const oldPass = $("#oldPass").val().trim();
+        // const newPass = $("#newPass").val().trim();
+        // const confirmPass = $("#confirmPass").val().trim();
+        // if (oldPass === "" || newPass === "" || confirmPass === "") {
+        //     toast.warning("Please enter all required field");
+        // } else if (newPass !== confirmPass) {
+        //     toast.warning("Confirm password not correct");
+        // } else if (oldPass !== user.USER_KEY) {
+        //     toast.warning("Current password not correct");
+        // } else {
+        //     // disatch(updateUser(user.id, {
+        //     //     ...temp, USER_KEY: newPass
+        //     // })).then(response => {
+        //     //     disatch(findUserById(response.id)).then(res => {
+        //     //         toast.success("Password updated successfully");
+        //     //         change === true ? setChange(false) : setChange(true);
+        //     //         $("#oldPass").val("");
+        //     //         $("#newPass").val("");
+        //     //         $("#confirmPass").val("");
+        //     //     })
+        //     // })
+        // }
+
     }
 
     return (

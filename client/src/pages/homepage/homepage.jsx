@@ -4,6 +4,9 @@ import 'font-awesome/css/font-awesome.min.css';
 import '../../styles/homepage.css';
 import Card from './card';
 import Feature from './feature';
+import { useState } from 'react';
+import Search from '../search/search';
+import $ from "jquery";
 
 export default function Homepage() {
     const settings = {
@@ -15,8 +18,13 @@ export default function Homepage() {
         autoplaySpeed: 3500,
     };
 
+    const [search, setSearch] = useState(false);
+    const [text, setText] = useState({});
+
+
     return (
         <div>
+
             <div className="jumbotron1">
                 <h1 className="display-5">RMIT Vietnam Library</h1>
                 <hr className="my-4" />
@@ -39,12 +47,13 @@ export default function Homepage() {
                             placeholder="Search the library..."
                             name="search"
                             className="searchBox rounded-pill"
+                            id="textinput"
                         />
                         <button
-                            type="submit"
+                            // type="submit"
                             className="searchBt rounded-pill border-0"
                         >
-                            <i className="fa fa-search"></i>
+                            <i className="fa fa-search" ></i>
                         </button>
                     </form>
                 </div>
@@ -185,6 +194,7 @@ export default function Homepage() {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }

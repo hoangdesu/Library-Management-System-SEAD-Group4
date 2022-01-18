@@ -7,6 +7,7 @@ import Footer from './pages/layouts/footer';
 import UserProfile from './pages/user/UserProfile';
 import Counter from './pages/Counter';
 import NavigationBar from './pages/layouts/navbar';
+import Search from './pages/search/search';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/user-profile" component={UserProfile} />
+                    <Route exact path="/search" component={Search} />
                     {/* <Route exact path="/counter" component={Counter} /> Testing redux */}
                 </Switch>
             </BrowserRouter>

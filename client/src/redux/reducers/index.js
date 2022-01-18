@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
 import auth from './auth';
-import counter from "./counter"
+import book from "./book"
 
 export default combineReducers({
     auth,
-    counter
+    book
 })

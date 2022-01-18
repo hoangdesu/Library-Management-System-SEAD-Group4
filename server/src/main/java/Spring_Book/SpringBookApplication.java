@@ -39,7 +39,7 @@ public class SpringBookApplication {
         user.setFirstName("aaronstone");
         user.setLastName("K");
 
-        user.setPassword(passwordEncoder.encode("pardeep@123"));
+        user.setPassword(passwordEncoder.encode("12345678"));
         user.setEnabled(true);
         user.setAuthorities(authorityList);
 
