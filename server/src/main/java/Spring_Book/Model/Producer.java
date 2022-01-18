@@ -18,4 +18,9 @@ public class Producer {
         logger.info(String.format("#### -> Producing message -> %s", book));
         this.kafkaTemplate.send(TOPIC, book);
     }
+
+    public void sendUserMessage(Person person){
+        logger.info(String.format("#### -> Producing message -> %s", person));
+        this.kafkaTemplate.send(TOPIC, person)
+    }
 }
