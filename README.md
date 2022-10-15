@@ -50,7 +50,7 @@ Functionality
 
 Testing, project presentation (readme, report files)
 
-	[] Testing: significant amount of (sample) data loaded into databases for load testing. Evidence that systems can be scaled linearly with high load i.e 1000 requests per second.
+	[x] Testing: significant amount of (sample) data loaded into databases for load testing. Evidence that systems can be scaled linearly with high load i.e 1000 requests per second.
 
 	[x] Project presentation: clearly describe the design of the system, all functionalities implemented, known bugs and issues, limitation should be stated clearly. Clearly describe the components and technologies used in the system and justification of your decision and choices.
 
